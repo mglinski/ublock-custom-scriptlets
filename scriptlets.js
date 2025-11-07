@@ -27,7 +27,8 @@ function callFunctionDelayed(
             console.log(`uBO-Scriptlet[callFunctionDelayed]: waiting ${waitTime} ms...`);
             if (waitTime > 0) await sleep(waitTime);
             console.log(`uBO-Scriptlet[callFunctionDelayed]: calling -> ${funcCall}`);
-            self.requestAnimationFrame(funcCall);
+            const fn = window[funcCall];
+            self.requestAnimationFrame(fn);
             console.log(`uBO-Scriptlet[callFunctionDelayed]: called -> ${funcCall}`);
         } catch (e) {
             console.error(`uBO-Scriptlet[callFunctionDelayed]: EXCEPTION`, e);
