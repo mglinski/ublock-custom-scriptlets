@@ -8,7 +8,7 @@ function callFunctionDelayed(
 ) {
     // @link: https://stackoverflow.com/questions/175739/how-can-i-check-if-a-string-is-a-valid-number#answer-175787
     const isStrNumeric = (str) => {
-        if (typeof str != "string") return false; // we only process strings!  
+        if (typeof str !== "string") return false; // we only process strings!  
         // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this) and ensure strings of whitespace fail
         return !isNaN(str) && !isNaN(parseFloat(str));
     };
@@ -16,7 +16,7 @@ function callFunctionDelayed(
         console.log(`uBO-Scriptlet[callFunctionDelayed]: ERROR: funcCall is empty string`);    
         return;
     }
-    if (typeof waitTime === string && !isStrNumeric(waitTime)) {
+    if (typeof waitTime === "string" && !isStrNumeric(waitTime)) {
         console.log(`uBO-Scriptlet[callFunctionDelayed]: ERROR: waitTime is not a valid number`);
         return;
     }
