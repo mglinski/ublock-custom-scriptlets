@@ -13,11 +13,11 @@ function callFunctionDelayed(
         return !isNaN(str) && !isNaN(parseFloat(str));
     };
     if (funcCall === '') {
-        console.log(`uBO-Scriptlet[callFunctionDelayed]: ERROR: funcCall is empty string`);    
+        console.error(`uBO-Scriptlet[callFunctionDelayed]: ERROR: funcCall is empty string`);    
         return;
     }
     if (typeof waitTime === "string" && !isStrNumeric(waitTime)) {
-        console.log(`uBO-Scriptlet[callFunctionDelayed]: ERROR: waitTime is not a valid number`);
+        console.error(`uBO-Scriptlet[callFunctionDelayed]: ERROR: waitTime is not a valid number`);
         return;
     }
     waitTime = parseInt(waitTime);
@@ -29,7 +29,9 @@ function callFunctionDelayed(
             console.log(`uBO-Scriptlet[callFunctionDelayed]: calling -> ${funcCall}`);
             self.requestAnimationFrame(funcCall);
             console.log(`uBO-Scriptlet[callFunctionDelayed]: called -> ${funcCall}`);
-        } catch (e) {}
+        } catch (e) {
+            console.error(`uBO-Scriptlet[callFunctionDelayed]: EXCEPTION`, e);
+        }
     };
     runAt(() => {
         funcInvoke();
