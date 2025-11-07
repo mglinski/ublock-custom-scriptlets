@@ -8,7 +8,6 @@ function callFunctionDelayed(
 ) {
     if (funcCall === '') return;
     if (!Number.isInteger(waitTime)) return;
-
     const funcInvoke = async () => {
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
         try {
